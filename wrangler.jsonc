@@ -1,0 +1,9 @@
+// Cloudflare Workers static assets. Serves the built site in dist/.
+// Check Cloudflare's current docs before deploying; set compatibility_date to the day you deploy.
+{
+  "name": "premier-notary-site",
+  "compatibility_date": "2026-11-15",
+  "assets": {
+    "directory": "./dist"
+  }
+}

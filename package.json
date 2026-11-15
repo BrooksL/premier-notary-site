@@ -1,0 +1,9 @@
+{
+  "name": "premier-notary-site",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build:preview": "node scripts/build.mjs preview",
+    "build:launch": "node scripts/build.mjs launch"
+  }
+}
