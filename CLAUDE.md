@@ -35,9 +35,11 @@ Your job is to productionize it, not redesign it.
   `[placeholder]` until the client supplies it.
 
 ## Build modes
-`npm run build:preview` or `npm run build:launch` (they run `scripts/build.mjs`) writes `dist/`.
+`npm run build:preview`, `npm run build:demo` or `npm run build:launch` (they run `scripts/build.mjs`) writes `dist/`.
 - **preview**: adds `noindex`, a disallow-all robots.txt, and the preview layer (ribbon, watermark, copy and
   right-click deterrents, no print). Form fields must stay selectable and usable.
+- **demo**: adds `noindex` and a disallow-all robots.txt, with no preview layer. This is what GitHub Pages publishes
+  from `main` (`.github/workflows/pages.yml`) at https://brooksl.github.io/premier-notary-site/ for the client to review.
 - **launch**: clean output, allow-all robots.txt, no preview layer.
 The build copies everything in `site/` except `assets/logo-original.png`. A launch build prints `NOT READY TO LAUNCH`
 warnings while placeholders remain or the form has no endpoint.
@@ -49,7 +51,9 @@ This is a design presentation build: it shows the look and feel, and nothing is 
 - The form has `data-endpoint=""`. While it's empty a submit sends nothing and shows the success message plus
   "This is a design preview, so nothing was sent." Setting it to a form service URL makes `site.js` POST the fields.
 - Not done: choosing and wiring the form service (step 4), self-hosting Archivo (5), WebP and minification (6, 7),
-  deployment and Cloudflare Access (8). `[domain]` in the head is a placeholder like the ones in the copy.
+  the public launch deploy (8). `[domain]` in the head is a placeholder like the ones in the copy.
+- The repo is public and the demo is on GitHub Pages, open to anyone with the link. The Cloudflare Access route in
+  `docs/hosting-and-protection.md` was not used.
 
 ## Suggested work, in order
 1. Move the inline `<style>` into `site/styles.css` and link it; keep the CSS identical. (Done.)

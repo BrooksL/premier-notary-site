@@ -26,7 +26,7 @@ to finish it, put a private preview online for the client, and later launch it p
 1. Unzip this folder, then `cd premier-notary-site`.
 2. Create a **private** GitHub repository and push this folder to it. Keep it private so the source isn't public.
 3. Open the folder in Claude Code and paste the prompt from `docs/kickoff-prompt.md`.
-4. To try it locally: `npm run preview`, then open http://127.0.0.1:4173. That builds the preview into `dist/` and
+4. To try it locally: `npm run preview`, then open http://127.0.0.1:4173. That builds the demo into `dist/` and
    serves it. Node is pinned in `mise.toml`.
 
 ## Where it stands
@@ -36,6 +36,10 @@ nothing yet: submitting it shows the success message with a note that it's a pre
 `CLAUDE.md` for what's done and what's left.
 
 ## Hosting, in short
+
+**Current setup:** the repo is public and every push to `main` publishes the demo build (noindex, no preview ribbon)
+to GitHub Pages at https://brooksl.github.io/premier-notary-site/. Anyone with the link can open it. The notes below
+describe the gated Cloudflare route from the original packet, which isn't in use.
 
 - **For the client preview, use Cloudflare with Access, not GitHub Pages.** GitHub Pages sites are public on the internet even when the repository is private. Restricting who can view a Pages site needs GitHub Enterprise Cloud.
 - Cloudflare can deploy from your private repo, and Cloudflare Access can limit the site to specific email addresses with a one-time code. Allow only your email and the client's, and a forwarded link won't open for anyone else. The Zero Trust free plan covers up to 50 users.
