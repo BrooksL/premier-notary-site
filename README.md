@@ -8,7 +8,8 @@ to finish it, put a private preview online for the client, and later launch it p
 
 | Path | What it is |
 | --- | --- |
-| `site/index.html` | The C2 design as a working static page. Open it in a browser to see it. This is the visual source of truth. |
+| `site/index.html`, `site/styles.css` | The C2 design as a working static page. This is the visual source of truth. |
+| `site/site.js` | Small enhancements: the request form's submit handling and closing the phone menu after a tap. |
 | `site/assets/` | Logo files with transparent backgrounds (emblem, wordmark, full stacked logo) and the original logo the client sent. |
 | `preview/` | The preview-only layer: watermark ribbon, copy and right-click deterrents, no-print, and a robots.txt that blocks search engines. |
 | `scripts/build.mjs` | Builds `dist/` in `preview` mode (with the preview layer) or `launch` mode (clean). No dependencies. |
@@ -25,7 +26,14 @@ to finish it, put a private preview online for the client, and later launch it p
 1. Unzip this folder, then `cd premier-notary-site`.
 2. Create a **private** GitHub repository and push this folder to it. Keep it private so the source isn't public.
 3. Open the folder in Claude Code and paste the prompt from `docs/kickoff-prompt.md`.
-4. To try it locally: `node scripts/build.mjs preview`, then serve `dist/` (for example `npx serve dist`).
+4. To try it locally: `npm run preview`, then open http://127.0.0.1:4173. That builds the preview into `dist/` and
+   serves it. Node is pinned in `mise.toml`.
+
+## Where it stands
+
+This is a design presentation build. The page looks and behaves like the finished site, but the request form sends
+nothing yet: submitting it shows the success message with a note that it's a preview. See "Where things stand" in
+`CLAUDE.md` for what's done and what's left.
 
 ## Hosting, in short
 

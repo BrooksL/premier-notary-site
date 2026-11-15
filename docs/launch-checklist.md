@@ -14,7 +14,9 @@
 - [ ] Signed agreement and payment terms
 
 ## Before going live
-- [ ] Every [placeholder] replaced (search the code for "[")
+- [ ] Every [placeholder] replaced (search the code for "["), including `[domain]` in the `<head>` of `site/index.html`
+- [ ] Form service chosen and its URL set in `data-endpoint` on the request form
+- [ ] `npm run build:launch` prints no `NOT READY TO LAUNCH` warnings
 - [ ] Google review count updated, or a plan for keeping it current
 - [ ] Form submits successfully, and the success and error messages show
 - [ ] Launch build deployed: no ribbon, no watermark, no noindex

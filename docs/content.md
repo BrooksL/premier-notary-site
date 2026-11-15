@@ -72,8 +72,10 @@ Every line of copy on the page, in order. Text in [brackets] is a placeholder wa
   Process serving) · Number of signers · Where to meet (placeholder "City or address") · Preferred day and time ·
   Anything we should know
 - Button: Send request
-- Success message (to add): Thanks. We got your request and will call you shortly to confirm a time.
-- Error message (to add): Your request didn't go through. Please call (256) 361-8255 or try again.
+- Success message: Thanks. We got your request and will call you shortly to confirm a time.
+- Error message: Your request didn't go through. Please call (256) 361-8255 or try again.
+- Preview-only note under the success message, shown while the form isn't wired up: This is a design preview, so
+  nothing was sent.
 
 ## Footer
 - Giant number: (256) 361-8255

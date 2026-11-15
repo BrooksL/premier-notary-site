@@ -6,14 +6,15 @@ signing and process serving company in North Alabama. The design (called C2, "Di
 Your job is to productionize it, not redesign it.
 
 ## Source of truth
-- `site/index.html` is the approved design. It already works. Match its layout, spacing, type and colors exactly.
-  Copy exact values from it; do not round them or swap in framework defaults.
+- `site/index.html` and `site/styles.css` are the approved design. They already work. Match the layout, spacing, type
+  and colors exactly. Copy exact values from them; do not round them or swap in framework defaults.
 - `docs/design-spec.md` documents the tokens and components. `docs/content.md` has every line of copy.
 - If anything here conflicts with `site/index.html`, the HTML wins. Ask before changing the design.
 
 ## Stack
 - Plain static HTML and CSS. No framework, no CSS library, no client-side rendering.
-- JavaScript only for the preview layer (`preview/preview.js`) and, if needed, the form submit.
+- JavaScript only for the preview layer (`preview/preview.js`) and `site/site.js` (form submit, and closing the phone
+  menu after a link is tapped). The page must read and work without `site.js`.
 - Node is used only for the build script (`scripts/build.mjs`). Keep it dependency-free unless a step truly needs one
   (an HTML/CSS minifier as a devDependency is fine).
 - Fonts: Archivo from Google Fonts, with the width axis (`wdth 62..125`) because the design uses `font-stretch`.
@@ -38,14 +39,24 @@ Your job is to productionize it, not redesign it.
 - **preview**: adds `noindex`, a disallow-all robots.txt, and the preview layer (ribbon, watermark, copy and
   right-click deterrents, no print). Form fields must stay selectable and usable.
 - **launch**: clean output, allow-all robots.txt, no preview layer.
-If you move CSS into its own file, make sure the build still copies it.
+The build copies everything in `site/` except `assets/logo-original.png`. A launch build prints `NOT READY TO LAUNCH`
+warnings while placeholders remain or the form has no endpoint.
+
+## Where things stand
+This is a design presentation build: it shows the look and feel, and nothing is sent anywhere yet.
+- Done: CSS in `site/styles.css` (byte-identical to the approved inline CSS), head tags, favicon set, share image,
+  `LocalBusiness` JSON-LD, image `width`/`height`, form field names with success and error messages.
+- The form has `data-endpoint=""`. While it's empty a submit sends nothing and shows the success message plus
+  "This is a design preview, so nothing was sent." Setting it to a form service URL makes `site.js` POST the fields.
+- Not done: choosing and wiring the form service (step 4), self-hosting Archivo (5), WebP and minification (6, 7),
+  deployment and Cloudflare Access (8). `[domain]` in the head is a placeholder like the ones in the copy.
 
 ## Suggested work, in order
-1. Move the inline `<style>` into `site/styles.css` and link it; keep the CSS identical.
+1. Move the inline `<style>` into `site/styles.css` and link it; keep the CSS identical. (Done.)
 2. Head: canonical URL placeholder, Open Graph and Twitter tags (absolute image URL once the domain is known),
-   favicon set made from `assets/emblem.png`, `theme-color` `#F1EFEA`.
+   favicon set made from `assets/emblem.png`, `theme-color` `#F1EFEA`. (Done, with `[domain]` placeholders.)
 3. Structured data: a `LocalBusiness` JSON-LD block (name, telephone, areaServed "North Alabama", URL placeholder,
-   logo). No ratings or reviews in it.
+   logo). No ratings or reviews in it. (Done.)
 4. Request form: wire it to a static-friendly form service (for example Formspree or Web3Forms), or a small
    Cloudflare Worker that emails the request. Add a success message and an error message in the page's voice.
    Keep the Name, Phone, Service, Number of signers, Where to meet, Preferred day and time, and Notes fields.

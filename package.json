@@ -4,6 +4,8 @@
   "type": "module",
   "scripts": {
     "build:preview": "node scripts/build.mjs preview",
-    "build:launch": "node scripts/build.mjs launch"
+    "build:launch": "node scripts/build.mjs launch",
+    "serve": "python3 -m http.server 4173 --bind 127.0.0.1 --directory dist",
+    "preview": "npm run build:preview && npm run serve"
   }
 }
