@@ -13,10 +13,11 @@ The working reference is `site/index.html`. This file explains the system behind
 | Rule | `#E2DFD8` | Hairlines on white |
 | Rule on paper | `#D6D2C9` | Hairlines on paper |
 | Field border | `#A9A59B` | Form inputs |
-| Gold | `#B1940F` | Brand accent, decoration only: hairline under the hero number, lines above reviews, rating stars |
+| Gold | `#B1940F` | Brand accent: hairline under the hero number, lines above reviews, rating stars, and the fill of the "Request" buttons (with ink text, 5.9:1) |
 | Gold, text | `#96790B` | Step numerals (large text) and focus outlines |
 
-Gold is never used for body-size text on light backgrounds; it doesn't meet contrast there.
+Gold is never used as a text color at body size on light backgrounds, and never with white text on it; neither
+meets contrast.
 
 ## Type
 One family: **Archivo** (Google Fonts, axes `wdth 62..125`, `wght 400..800`).
@@ -46,7 +47,7 @@ The logo's wordmark is a heavy, wide sans, so Archivo's expanded headings sit na
 - **Rating row:** five gold stars (17px, 19 on desktop) + "**5.0** from 249 Google reviews". The whole row links to
   #reviews and is at least 44px tall. Stars are `aria-hidden`; the text carries the meaning.
 - **Hero:** H1, then the giant number (a `tel:` link), then a 1px gold rule, then the intro. Desktop adds
-  "Call now" (solid ink) and "Request an appointment" (2px ink outline); both 54px tall, 4px radius.
+  "Call now" (solid ink) and "Request an appointment" (solid gold, ink text); both 54px tall, 4px radius.
 - **How it works:** three numbered steps (a real sequence). Phones: numeral in a 52px column beside the text.
   Desktop: three columns, numeral on top.
 - **Services:** rows under a 2px ink rule with 1px dividers. Phones stack name, description, audience; desktop puts
@@ -59,5 +60,6 @@ The logo's wordmark is a heavy, wide sans, so Archivo's expanded headings sit na
   phones, pairs from 640px. Submit is solid ink, full width on phones.
 - **Footer:** giant number again (`clamp(44px, 12.5cqi, 88px)`), full stacked logo, legal line, disclaimer.
 - **Sticky bar (below 960px only):** white bar fixed to the bottom with a 1px top rule and safe-area padding.
-  Left: solid ink "call" button with a phone icon and the number; right: outlined "Request". Both 52px tall.
+  Left: solid ink "call" button with a phone icon and the number; right: solid gold "Request" with ink text. Both
+  52px tall.
 - **Focus:** 2px `#96790B` outline, 3px offset, on every interactive element.
